@@ -1,0 +1,162 @@
+:root {
+    --fontColor: #00FF66;
+
+    --background-main:#16093d;
+    --background-side:#16093d;
+    --primary-color1: #00FF66;
+    --secondary-color1:#E6FB04;
+    --primary-color2:#FF0099;
+    --secondary-color2:#FF00CC;
+ 
+    --p-size:20px;
+    --h1-size:30px;
+    --h2-size:24px;
+    --h3-size:12px;
+
+    --transition-time: 0.25s;
+
+}
+
+body { 
+    margin: 0; 
+    font-family: 'JetBrain';
+    background-color: var(--background-main);
+    color: var(--fontColor);
+    cursor: url(img/alien.cur), auto;
+    line-height: 1.5;
+    display:grid;
+    grid-template-columns: 320px, auto;
+    min-height:100vh;
+}
+
+nav {
+    background-color: var(--background-side);
+    padding: 24px;
+    display:flex;
+    flex-direction: column;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index:2;
+    
+}
+
+main {
+    padding: 24px 24px 24px 344px;
+    position: relative;
+    /* left: 320px; */
+    /* min-width: 600px; */
+    z-index: 1;
+}
+
+p {
+    font-size: var(--p-size);
+    color: var(--primary-color2);
+}
+
+h1 {
+    font-size: var(--h1-size);
+    font-family: Agrandir;
+    color: var(--secondary-color1);
+    width: 100%;
+}
+
+h2 {
+    font-size: var(--h2-size);
+}
+
+h3{
+    font-size: var(--h3-size);
+    color: var(--primary-color1);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 24px 0 0 0;
+}
+
+rect {
+
+    fill: var(--primary-color2);
+    transition: fill var(--transition-time);
+}
+
+g:hover rect {
+
+    fill: var(--secondary-color1);
+}
+
+circle {
+
+    /* fill: var(--primary-color2); */
+}
+
+text {
+    fill: var(--primary-color1);
+    text-anchor: middle;
+    font-size: var(--h3-size);
+}
+
+.live-stats{
+    margin-top: 100px;
+}
+
+
+text.today-steps {
+    font-size: 10px;
+    opacity: 0;
+    transition: opacity var(--transition-time);
+    fill: var(--secondary-color1);
+}
+
+g:hover text.today-steps {
+     opacity: 1;
+     fill: var(--secondary-color1)
+}
+
+text.today-hours {
+    transition: fill var(--transition-time);
+
+}
+
+g:hover text.today-hours {
+    fill: var(--secondary-color1)
+}
+
+.transparent {
+    opacity: 0;
+}
+
+
+circle.data-circle {
+    transition: fill var(--transition-time);
+}
+
+g:hover circle.data-circle {
+
+    fill: var(--secondary-color1);
+}
+
+.ring {
+    fill: none;
+    stroke: #6b3affbe;
+    stroke-width: 1px;;
+}
+
+text.month-days {
+    opacity: 1;
+    transition: opacity var(--transition-time);
+}
+
+
+text.month-steps {
+    opacity: 0;
+    transition: opacity var(--transition-time);
+    fill: var(--secondary-color1);
+}
+
+g:hover text.month-days {
+    opacity: 0;
+}
+
+g:hover text.month-steps {
+ opacity: 1;
+}

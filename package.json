@@ -1,0 +1,34 @@
+{
+  "name": "windows-dev",
+  "version": "1.0.0",
+  "description": "Windows Based Starting Dev Environment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evaneagan/windows_dev.git"
+  },
+  "author": "Evan Eagan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/evaneagan/windows_dev/issues"
+  },
+  "homepage": "https://github.com/evaneagan/windows_dev#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.1.0",
+    "browser-sync": "^2.26.13",
+    "gh-pages": "^3.1.0",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-postcss": "^9.0.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "postcss": "^8.2.2",
+    "postcss-preset-env": "^6.7.0",
+    "webpack-stream": "^6.1.1"
+  },
+  "dependencies": {}
+}
