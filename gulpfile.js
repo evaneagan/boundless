@@ -15,7 +15,7 @@ const imagemin = require('gulp-imagemin')
 const ghpages = require("gh-pages")
 
 
-const { watch, parallel } = require('gulp');
+const { watch, series } = require('gulp');
 
 
 
@@ -41,6 +41,7 @@ function runCss(cb) {
                 }),
         ])
       )
+      .pipe(concat('app.css'))
       .pipe(cleanCss({compatibility: 'ie8'}))
       .pipe(sourcemaps.write())
       .pipe(gulp.dest('dist'))
@@ -94,10 +95,7 @@ function Sync(cb){
 
     browserSync.init({
         server: {
-            baseDir: ('dist'),
-            serveStaticOptions: {
-                extentions: ['html']
-            }
+            baseDir: ('dist')
         }
     })
 
@@ -106,24 +104,26 @@ function Sync(cb){
 
 
 
-
-
-
-
-
-exports.deploy = function (cb) {
+exports.deploy = function(cb) {
     ghpages.publish('dist') 
 
     cb();
 }
 
-exports.default = function () {
+exports.default = function() {
+
+    browserSync.init({
+        server: {
+            baseDir: ('dist')
+        }
+    })
 
     watch('src/js/*', scripts);
     watch('src/css/app.css', runCss);
-    watch('src/fonts/*', fonts);
+    watch('src/css/typography.css', runCss);
     watch('src/img/*', images);
-    watch('src/*.html', parallel(HTML, fonts, images, Sync, scripts)).on('change', browserSync.reload); 
+    watch('src/fonts/*', fonts);
+    watch('src/*.html', series(HTML, fonts, images, Sync, scripts)).on('change', browserSync.reload); 
     
 
     
