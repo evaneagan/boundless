@@ -15,7 +15,7 @@ const imagemin = require('gulp-imagemin')
 const ghpages = require("gh-pages")
 
 
-const { watch, series } = require('gulp');
+const { watch, parallel } = require('gulp');
 
 
 
@@ -91,16 +91,16 @@ function scripts(cb){
 
 
 
-function Sync(cb){
+// function Sync(cb){
 
-    browserSync.init({
-        server: {
-            baseDir: ('dist')
-        }
-    })
+//     browserSync.init({
+//         server: {
+//             baseDir: ('dist')
+//         }
+//     })
 
-    cb();
-}
+//     cb();
+// }
 
 
 
@@ -123,7 +123,7 @@ exports.default = function() {
     watch('src/css/typography.css', runCss);
     watch('src/img/*', images);
     watch('src/fonts/*', fonts);
-    watch('src/*.html', series(HTML, fonts, images, Sync, scripts)).on('change', browserSync.reload); 
+    watch('src/*.html', parallel(HTML, fonts, images, scripts)).on('change', browserSync.reload); 
     
 
     
