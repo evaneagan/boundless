@@ -15,7 +15,7 @@ const imagemin = require('gulp-imagemin')
 const ghpages = require("gh-pages")
 
 
-const { watch, parallel } = require('gulp');
+const { watch, parallel, series } = require('gulp');
 
 
 
@@ -91,26 +91,7 @@ function scripts(cb){
 
 
 
-// function Sync(cb){
-
-//     browserSync.init({
-//         server: {
-//             baseDir: ('dist')
-//         }
-//     })
-
-//     cb();
-// }
-
-
-
-exports.deploy = function(cb) {
-    ghpages.publish('dist') 
-
-    cb();
-}
-
-exports.default = function() {
+function keepwatch(cb) {
 
     browserSync.init({
         server: {
@@ -124,7 +105,22 @@ exports.default = function() {
     watch('src/img/*', images);
     watch('src/fonts/*', fonts);
     watch('src/*.html', parallel(HTML, fonts, images, scripts)).on('change', browserSync.reload); 
-    
+
+
+    cb()
 
     
 };
+
+exports.deploy = function(cb) {
+    ghpages.publish('dist') 
+
+    cb();
+}
+
+
+
+exports.keepwatch = keepwatch;
+
+exports.default = series(HTML, fonts, images, scripts, runCss, keepwatch)
+
