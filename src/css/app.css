@@ -1,6 +1,6 @@
 @font-face {
     font-family:  Space Grotesk;
-      src: url(/fonts/spacegrotesk-medium.woff2), url(/fonts/spacegrotesk-medium.woff);
+      src: url(fonts/spacegrotesk-medium.woff2), url(fonts/spacegrotesk-medium.woff);
   }
   
   :root {
