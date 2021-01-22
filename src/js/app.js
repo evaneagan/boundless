@@ -63,7 +63,7 @@ const updateGraph = function () {
 
     
     const paths = pieGroup
-        .selectAll("paths")
+        .selectAll("path")
         .data(arcData)
     
     // for new paths
@@ -81,7 +81,7 @@ const updateGraph = function () {
         .transition()
         .duration(500)
         .ease(d3.easeLinear)
-        .attrTween("d", function (d, i) {
+        .attrTween("d", function (d, i) {67
             const startValue = this.savedValue
             const endValue = d
             const curve = d3.interpolate(startValue, endValue)
